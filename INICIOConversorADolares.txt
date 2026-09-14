@@ -1,0 +1,21 @@
+INICIO ConversorADolares
+
+DEFINIR Decimal CantidadACambiar, TasaCambio, TotalEnDolares, Comision, ValorTotal, ValorConComision;
+
+TasaCambio = 3096,41
+
+Comision = 0.02
+
+ESCRIBIR = "Ingrese el valor en COP a convertir";
+
+LEER CantidadACambiar;
+
+TotalEnDolares = CantidadACambiar/TasaDeCambio;
+
+ValorConComision = TotalEnDolares * TasaDeCambio
+
+IMPRIMIR "valor a recibir es:" + TotalEnDolares-ValorConComision
+
+FIN
+
+
