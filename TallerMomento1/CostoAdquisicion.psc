@@ -20,7 +20,7 @@ Algoritmo CostoAdquisicion
 	valor_monetario_ganancia <- costo_base*conversion
 	subtotal <- costo_base+valor_monetario_ganancia
 	valor_impuesto <- subtotal*IVA
-	precio_final <- subtotal+valor_impuesto 
+	precio_final <- subtotal+valor_impuesto
 	// Salida
 	Escribir ('---------------------------')
 	Escribir nombre_producto, ' ----- ', costo_base
