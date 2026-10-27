@@ -33,8 +33,13 @@ public class ModuloVentasIterativo {
             System.out.println("3. Agregar producto premium");
             System.out.println("4. finalizar compra");
             System.out.println("Ingresa la opción");
-            opcion = sc.nextInt();
-
+            if (sc.hasNextInt()) {
+               opcion = sc.nextInt();
+            }else{
+               sc.next();
+               System.out.println("No ingresaste una opcion valida");   
+            }
+            
             if (opcion == 1) {
                importe_bruto = importe_bruto + PRODUCTOBASICO;
                contador_productos_basicos = contador_productos_basicos + 1;
@@ -45,34 +50,47 @@ public class ModuloVentasIterativo {
                importe_bruto = importe_bruto + PRODUCTOPREMIUM;
                contador_productos_premium = contador_productos_premium +1;
             }
-
+            else if (opcion != 1 && opcion !=2 && opcion !=3 && opcion !=4) {
+               System.out.println("ingresa una opción valida");
+            }
+            
          } while (opcion != 4);
-         //System.out.println(importe_bruto);
-         if (importe_bruto > VALORPARADESCUENTO) {
-             valor_descuento = importe_bruto * DESCUENTO;
-             importe_neto  = importe_bruto - valor_descuento;
-         }else{
-            importe_neto  = importe_neto + importe_bruto;
-         }
-         //System.out.println(importe_neto);
-         valor_descuentoiva = importe_neto * IVA;
-         importe_neto = importe_neto + valor_descuentoiva;
-         System.out.println(importe_neto);
-         System.out.println("------------------------");
-         System.out.println("Factura");
-         System.out.println("El valor bruto es: " + importe_bruto);
-         System.out.println("El valor del descuento es: " + valor_descuento);
-         System.out.println("El valor del iva es: " + valor_descuentoiva);
-         System.out.println("El valor con iva es: " + importe_neto);
-         System.out.println("------------------------");
-
+         
          productos_totales = contador_productos_basicos + contador_productos_medios + contador_productos_premium;
+         
+         if (productos_totales == 0) {
 
-         System.out.println("la cantidad de productos ingresados es: " + productos_totales);
+            System.out.println("No has ingresado ningun producto, gracias por usar el programa");
+            
+         }else{
 
-         porcentaje_productos_premium = contador_productos_premium * (100.0 / productos_totales);
+            //System.out.println(importe_bruto);
+            if (importe_bruto > VALORPARADESCUENTO) {
+               valor_descuento = importe_bruto * DESCUENTO;
+               importe_neto  = importe_bruto - valor_descuento;
+            }else{
+               importe_neto  = importe_neto + importe_bruto;
+            }
+            //System.out.println(importe_neto);
+            valor_descuentoiva = importe_neto * IVA;
+            importe_neto = importe_neto + valor_descuentoiva;
+            System.out.println(importe_neto);
+            System.out.println("------------------------");
+            System.out.println("Factura");
+            System.out.println("El valor bruto es: " + importe_bruto);
+            System.out.println("El valor del descuento es: " + valor_descuento);
+            System.out.println("El valor del iva es: " + valor_descuentoiva);
+            System.out.println("El valor con iva es: " + importe_neto);
+            System.out.println("------------------------");
 
-         System.out.println("El porcentaje de productos premiun ingresados en su factura es del: " + "% " + porcentaje_productos_premium);
+
+            System.out.println("la cantidad de productos ingresados es: " + productos_totales);
+
+            porcentaje_productos_premium = contador_productos_premium * (100.0 / productos_totales);
+
+            System.out.println("El porcentaje de productos premiun ingresados en su factura es del: " + "% " + porcentaje_productos_premium);
+
+         }   
 
          sc.close();
       }
