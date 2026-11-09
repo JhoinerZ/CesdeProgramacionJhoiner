@@ -18,13 +18,54 @@ public class App {
         */
 
         Scanner sc = new Scanner(System.in);
+        int opcion = 0;
+        String marca_a_buscar;
+        String marca_a_agregar;
 
         String[] marcas = new String[5];
         marcas[0] = "Naf Naf";
         marcas[1] = "Americanino";
         marcas[2] = "Esprit";
 
-        
+        do {
+            System.out.println("Bienvenido al canal de Venta Directa / Kliiker del Grupo Uribe");
+            System.out.println("1. Ver marcas");
+            System.out.println("2. Validar disponibilidad de marca");
+            System.out.println("3. Registrar marca");
+            System.out.println("4. Salir");
+            opcion = sc.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    ImprimirMarcas(marcas);
+                    break;
+                
+                case 2:
+                    System.out.println("Ingrese la marca a buscar");
+                    sc.nextLine();
+                    marca_a_buscar = sc.nextLine();
+                    BuscarMarca(marcas, marca_a_buscar);
+                    break;
+
+                case 3:
+                    System.out.println("Ingrese la marca a registrar");
+                    sc.nextLine();
+                    marca_a_agregar = sc.nextLine();
+                    AgregarMarca(marcas, marca_a_agregar);
+                    break;
+
+                case 4:
+                    
+                    System.out.println("Muchas gracias por usar el sistema");
+                    break;
+           
+                default:
+                    break;
+            }
+
+        } while (opcion != 4);
+
+        sc.close();
    
     }
 
@@ -53,17 +94,24 @@ public class App {
     }
 
     public static void AgregarMarca(String[] arreglo_marcas, String marca_agregar){
+        
+        Boolean marca_disponible_para_agregar = false;
 
         for (int i = 0; i < arreglo_marcas.length; i++) {
 
-            if (arreglo_marcas[i] == null) {
 
+            if (arreglo_marcas[i] == null) {
+                marca_disponible_para_agregar = true;
                 arreglo_marcas[i] = marca_agregar;
                 break;
-            }else{
-                System.out.println("No hay espacio para agregar la marca que ingresaste");
             }
-            
+
+        }
+
+        if (marca_disponible_para_agregar == true){
+            System.out.println("Marca agregada exitosamente");
+        } else {
+            System.out.println("No hay espacio para agregar una marca");
         }
     }
 }
